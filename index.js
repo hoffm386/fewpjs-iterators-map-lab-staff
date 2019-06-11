@@ -12,5 +12,14 @@ const tutorials = [
 ];
 
 const titleCased = () => {
-  return tutorials
+  return tutorials.map( (tutorial) => {
+    let words = tutorial.split(" ");
+    /*
+      in JavaScript you can slice with any index, and if it's too high you just
+      get an empty string as the result.  so this would be fine even if we had
+      words that were shorter than 2 characters
+    */
+    words = words.map( word => word[0].toUpperCase() + word.slice(1) );
+    return words.join(" ");
+  })
 }
